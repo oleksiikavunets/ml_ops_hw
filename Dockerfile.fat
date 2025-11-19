@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends libglib2.0-0 li
 COPY inference.py .
 COPY model.pt .
 COPY requirements.txt .
+COPY example.jpg .
 
 RUN pip install --no-cache-dir -r requirements.txt
 

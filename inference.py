@@ -22,7 +22,7 @@ def predict(image_path):
 
         *_, top3_catid = torch.topk(probabilities, 3)
 
-        [print(catid.item())for catid in top3_catid]
+        [print(catid.item()) for catid in top3_catid]
 
 if __name__ == "__main__":
     predict(sys.argv[1])

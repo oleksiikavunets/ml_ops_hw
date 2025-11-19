@@ -14,11 +14,12 @@ RUN pip install --no-cache-dir --target=/python-deps -r requirements.txt
 FROM python:3.13-slim
 
 # Copy only necessary dependencies from the builder stage
-COPY --from=builder /python-deps /usr/local/lib/python3.11/site-packages/
+COPY --from=builder /python-deps /usr/local/lib/python3.13/site-packages/
 
 # Copy application code and the model
 COPY inference.py .
 COPY model.pt .
+COPY example.jpg .
 
 # Default command
 ENTRYPOINT ["python", "inference.py"]
