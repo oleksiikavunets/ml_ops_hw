@@ -12,3 +12,4 @@ traced_model = torch.jit.trace(model, dummy_input)
 traced_model.save("model.pt")
 
 print("Model saved.")
+
