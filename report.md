@@ -2,55 +2,54 @@
 
 ```commandline
 ml_ops_hw % docker images
-REPOSITORY                           TAG       IMAGE ID       CREATED             SIZE
-slim                                 latest    a15c9f994e55   34 minutes ago      11.6GB
-fat                                  latest    bc728d45aff0   About an hour ago   12.6GB
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+slim         latest    8d690d3828dc   15 minutes ago   1.13GB
+fat          latest    4549d8cb342a   3 hours ago      2.8GB
 ```
 
 Кількість шарів "fat" образу
 ```commandline
  ml_ops_hw % docker history fat
-IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
-5c5764c4956e   39 minutes ago   ENTRYPOINT ["python" "inference.py"]            0B        buildkit.dockerfile.v0
-<missing>      39 minutes ago   RUN /bin/sh -c pip install --no-cache-dir -r…   6.93GB    buildkit.dockerfile.v0
-<missing>      47 minutes ago   COPY requirements.txt . # buildkit              8.19kB    buildkit.dockerfile.v0
-<missing>      49 minutes ago   COPY model.pt . # buildkit                      14.5MB    buildkit.dockerfile.v0
-<missing>      49 minutes ago   COPY inference.py . # buildkit                  8.19kB    buildkit.dockerfile.v0
-<missing>      49 minutes ago   RUN /bin/sh -c apt-get update && apt-get ins…   21.2MB    buildkit.dockerfile.v0
-<missing>      2 weeks ago      CMD ["python3"]                                 0B        buildkit.dockerfile.v0
-<missing>      2 weeks ago      RUN /bin/sh -c set -eux;  for src in idle3 p…   16.4kB    buildkit.dockerfile.v0
-<missing>      2 weeks ago      RUN /bin/sh -c set -eux;   wget -O python.ta…   59.3MB    buildkit.dockerfile.v0
-<missing>      2 weeks ago      ENV PYTHON_SHA256=00e07d7c0f2f0cc002432d1ee8…   0B        buildkit.dockerfile.v0
-<missing>      2 weeks ago      ENV PYTHON_VERSION=3.9.25                       0B        buildkit.dockerfile.v0
-<missing>      2 weeks ago      ENV GPG_KEY=E3FF2839C048B25C084DEBE9B26995E3…   0B        buildkit.dockerfile.v0
-<missing>      2 weeks ago      RUN /bin/sh -c set -eux;  apt-get update;  a…   19.9MB    buildkit.dockerfile.v0
-<missing>      2 weeks ago      ENV LANG=C.UTF-8                                0B        buildkit.dockerfile.v0
-<missing>      2 weeks ago      ENV PATH=/usr/local/bin:/usr/local/sbin:/usr…   0B        buildkit.dockerfile.v0
-<missing>      21 months ago    RUN /bin/sh -c set -ex;  apt-get update;  ap…   694MB     buildkit.dockerfile.v0
-<missing>      21 months ago    RUN /bin/sh -c set -eux;  apt-get update;  a…   202MB     buildkit.dockerfile.v0
-<missing>      21 months ago    RUN /bin/sh -c set -eux;  apt-get update;  a…   64.9MB    buildkit.dockerfile.v0
-<missing>      21 months ago    # debian.sh --arch 'amd64' out/ 'trixie' '@1…   134MB     debuerreotype 0.16
-
+IMAGE          CREATED         CREATED BY                                      SIZE      COMMENT
+4549d8cb342a   3 hours ago     ENTRYPOINT ["python" "inference.py"]            0B        buildkit.dockerfile.v0
+<missing>      3 hours ago     RUN /bin/sh -c pip install --no-cache-dir -r…   919MB     buildkit.dockerfile.v0
+<missing>      3 hours ago     COPY example.jpg . # buildkit                   90.1kB    buildkit.dockerfile.v0
+<missing>      3 hours ago     COPY requirements.txt . # buildkit              8.19kB    buildkit.dockerfile.v0
+<missing>      3 hours ago     COPY model.pt . # buildkit                      14.5MB    buildkit.dockerfile.v0
+<missing>      3 hours ago     COPY inference.py . # buildkit                  8.19kB    buildkit.dockerfile.v0
+<missing>      23 hours ago    RUN /bin/sh -c apt-get update && apt-get ins…   21.2MB    buildkit.dockerfile.v0
+<missing>      2 weeks ago     CMD ["python3"]                                 0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago     RUN /bin/sh -c set -eux;  for src in idle3 p…   16.4kB    buildkit.dockerfile.v0
+<missing>      2 weeks ago     RUN /bin/sh -c set -eux;   wget -O python.ta…   59.3MB    buildkit.dockerfile.v0
+<missing>      2 weeks ago     ENV PYTHON_SHA256=00e07d7c0f2f0cc002432d1ee8…   0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago     ENV PYTHON_VERSION=3.9.25                       0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago     ENV GPG_KEY=E3FF2839C048B25C084DEBE9B26995E3…   0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago     RUN /bin/sh -c set -eux;  apt-get update;  a…   19.9MB    buildkit.dockerfile.v0
+<missing>      2 weeks ago     ENV LANG=C.UTF-8                                0B        buildkit.dockerfile.v0
+<missing>      2 weeks ago     ENV PATH=/usr/local/bin:/usr/local/sbin:/usr…   0B        buildkit.dockerfile.v0
+<missing>      21 months ago   RUN /bin/sh -c set -ex;  apt-get update;  ap…   694MB     buildkit.dockerfile.v0
+<missing>      21 months ago   RUN /bin/sh -c set -eux;  apt-get update;  a…   202MB     buildkit.dockerfile.v0
+<missing>      21 months ago   RUN /bin/sh -c set -eux;  apt-get update;  a…   64.9MB    buildkit.dockerfile.v0
+<missing>      21 months ago   # debian.sh --arch 'amd64' out/ 'trixie' '@1…   134MB     debuerreotype 0.16
 ```
 
 Кількість шарів "slim" образу
 ```commandline
 ml_ops_hw % docker history slim
 IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
-a15c9f994e55   45 minutes ago   ENTRYPOINT ["python" "inference.py"]            0B        buildkit.dockerfile.v0
-<missing>      45 minutes ago   COPY example.jpg . # buildkit                   90.1kB    buildkit.dockerfile.v0
-<missing>      45 minutes ago   COPY model.pt . # buildkit                      14.5MB    buildkit.dockerfile.v0
-<missing>      45 minutes ago   COPY inference.py . # buildkit                  8.19kB    buildkit.dockerfile.v0
-<missing>      57 minutes ago   COPY /python-deps /usr/local/lib/python3.13/…   7.24GB    buildkit.dockerfile.v0
-<missing>      41 hours ago     CMD ["python3"]                                 0B        buildkit.dockerfile.v0
-<missing>      41 hours ago     RUN /bin/sh -c set -eux;  for src in idle3 p…   16.4kB    buildkit.dockerfile.v0
-<missing>      41 hours ago     RUN /bin/sh -c set -eux;   savedAptMark="$(a…   39.7MB    buildkit.dockerfile.v0
-<missing>      42 hours ago     ENV PYTHON_SHA256=ed5ef34cda36cfa2f3a340f07c…   0B        buildkit.dockerfile.v0
-<missing>      42 hours ago     ENV PYTHON_VERSION=3.13.9                       0B        buildkit.dockerfile.v0
-<missing>      42 hours ago     ENV GPG_KEY=7169605F62C751356D054A26A821E680…   0B        buildkit.dockerfile.v0
-<missing>      42 hours ago     RUN /bin/sh -c set -eux;  apt-get update;  a…   4.94MB    buildkit.dockerfile.v0
-<missing>      42 hours ago     ENV PATH=/usr/local/bin:/usr/local/sbin:/usr…   0B        buildkit.dockerfile.v0
-<missing>      2 days ago       # debian.sh --arch 'amd64' out/ 'trixie' '@1…   87.4MB    debuerreotype 0.16
+8d690d3828dc   14 minutes ago   ENTRYPOINT ["python" "inference.py"]            0B        buildkit.dockerfile.v0
+<missing>      14 minutes ago   COPY inference.py model.pt example.jpg ./ # …   14.6MB    buildkit.dockerfile.v0
+<missing>      14 minutes ago   COPY /python-deps /usr/local/lib/python3.12/…   728MB     buildkit.dockerfile.v0
+<missing>      2 days ago       CMD ["python3"]                                 0B        buildkit.dockerfile.v0
+<missing>      2 days ago       RUN /bin/sh -c set -eux;  for src in idle3 p…   16.4kB    buildkit.dockerfile.v0
+<missing>      2 days ago       RUN /bin/sh -c set -eux;   savedAptMark="$(a…   41.3MB    buildkit.dockerfile.v0
+<missing>      2 days ago       ENV PYTHON_SHA256=fb85a13414b028c49ba18bbd52…   0B        buildkit.dockerfile.v0
+<missing>      2 days ago       ENV PYTHON_VERSION=3.12.12                      0B        buildkit.dockerfile.v0
+<missing>      2 days ago       ENV GPG_KEY=7169605F62C751356D054A26A821E680…   0B        buildkit.dockerfile.v0
+<missing>      2 days ago       RUN /bin/sh -c set -eux;  apt-get update;  a…   4.94MB    buildkit.dockerfile.v0
+<missing>      2 days ago       ENV LANG=C.UTF-8                                0B        buildkit.dockerfile.v0
+<missing>      2 days ago       ENV PATH=/usr/local/bin:/usr/local/sbin:/usr…   0B        buildkit.dockerfile.v0
+<missing>      3 days ago       # debian.sh --arch 'amd64' out/ 'trixie' '@1…   87.4MB    debuerreotype 0.16
 ```
 
 Проблеми "fat" образу
