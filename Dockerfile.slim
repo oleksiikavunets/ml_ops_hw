@@ -1,29 +1,22 @@
-# ===== STAGE 1: Build dependencies =====
 FROM python:3.12-slim AS builder
 
-WORKDIR /app
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libglib2.0-0 libsm6 libxrender1 libxext6 \
+        libglib2.0-0 libsm6 libxrender1 libxext6 binutils \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
-RUN pip install --upgrade pip \
-    && pip install --no-cache-dir --target=/python-deps -r requirements.txt
+# Torch CPU index
+RUN pip install --no-cache-dir \
+        --extra-index-url https://download.pytorch.org/whl/cpu \
+        --target=/python-deps -r requirements.txt \
+    && find /python-deps -name "*.so" -exec strip --strip-unneeded {} 2>/dev/null \; || true \
+    && find /python-deps -name "*.pyc" -delete
 
-# ===== STAGE 2: Runtime image =====
 FROM python:3.12-slim
-
-WORKDIR /app
 
 COPY --from=builder /python-deps /usr/local/lib/python3.12/site-packages/
 
-COPY inference.py .
-COPY model.pt .
-COPY example.jpg .
-
-RUN adduser --disabled-password appuser
-USER appuser
+COPY inference.py model.pt example.jpg ./
 
 ENTRYPOINT ["python", "inference.py"]
