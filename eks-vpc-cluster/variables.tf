@@ -5,5 +5,5 @@ variable "aws_region" {
 
 variable "project_name" {
   type    = string
-  default = "hw-5-6-eks"
+  default = "hw-5-6"
 }
