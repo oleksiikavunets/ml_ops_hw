@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "mlops-tf-state-goit"
-    key    = "eks/terraform.tfstate"
-    region = "us-east-1"
+    bucket = var.tf_state_bucket
+    key    = var.eks_state_key
+    region = var.aws_region
   }
 }
