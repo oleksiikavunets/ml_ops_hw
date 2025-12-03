@@ -47,41 +47,13 @@ aws configure --profile goit-terraform
 
 ## Запуск
 
-1) Ініціалізація бекендів
-
-У корені:
+1. Ініціалізація бекендів
 
 ```commandline
 terraform init
 ```
 
-У vpc/:
-
-```commandline
-cd vpc
-terraform init
-cd ..
-```
-
-У eks/:
-
-```commandline
-cd eks
-terraform init
-cd ..
-```
-
-2) Створення інфраструктури
-   Створити VPC
-
-```commandline
-cd vpc
-terraform plan
-terraform apply -auto-approve
-cd ..
-```
-
-Створити EKS
+2. Створення інфраструктури
 
 ```commandline
 terraform plan
@@ -103,8 +75,6 @@ kubectl get nodes
 ```
 
 ## Видалення всіх ресурсів
-
-Спочатку видаляємо EKS:
 
 ```commandline
 terraform destroy -auto-approve
