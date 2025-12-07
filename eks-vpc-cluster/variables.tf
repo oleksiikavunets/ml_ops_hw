@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "project_name" {
   type    = string
-  default = "hw-5-6"
+  default = "hw-7"
 }
 
 # Terraform state
@@ -78,7 +78,7 @@ variable "cluster_endpoint_private_access" {
 
 variable "cluster_endpoint_public_access_cidrs" {
   type    = list(string)
-  default = ["84.40.153.31/32"]
+  default = ["84.40.153.18/32"]
 }
 
 variable "enable_cluster_creator_admin_permissions" {
@@ -103,7 +103,7 @@ variable "cpu_nodes_min_size" {
 
 variable "cpu_nodes_instance_types" {
   type    = list(string)
-  default = ["t3.micro"]
+  default = ["t3.small"]
 }
 
 variable "gpu_nodes_desired_size" {
@@ -123,5 +123,5 @@ variable "gpu_nodes_min_size" {
 
 variable "gpu_nodes_instance_types" {
   type    = list(string)
-  default = ["t3.micro"]
+  default = ["t3.small"]
 }
