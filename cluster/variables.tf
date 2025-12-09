@@ -5,7 +5,12 @@ variable "aws_region" {
 
 variable "project_name" {
   type    = string
-  default = "hw-7"
+  default = "hw-8-9"
+}
+
+variable "aws_profile" {
+  type    = string
+  default = "goit-terraform"
 }
 
 # Terraform state
@@ -14,14 +19,9 @@ variable "tf_state_bucket" {
   default = "mlops-tf-state-goit"
 }
 
-variable "vpc_state_key" {
+variable "tf_state_key" {
   type    = string
-  default = "vpc/terraform.tfstate"
-}
-
-variable "eks_state_key" {
-  type    = string
-  default = "eks/terraform.tfstate"
+  default = "cluster/terraform.tfstate"
 }
 
 # VPC variables
@@ -125,3 +125,4 @@ variable "gpu_nodes_instance_types" {
   type    = list(string)
   default = ["t3.small"]
 }
+

@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = var.tf_state_bucket
-    key    = var.eks_state_key
+    key    = var.tf_state_key
     region = var.aws_region
   }
 }

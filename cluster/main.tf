@@ -1,3 +1,4 @@
+
 locals {
   cluster_name = "${var.project_name}-cluster"
 }
@@ -9,7 +10,7 @@ module "vpc" {
   aws_region   = var.aws_region
 
   tf_state_bucket = var.tf_state_bucket
-  vpc_state_key   = var.vpc_state_key
+  vpc_state_key   = var.tf_state_key
 
   vpc_cidr                = var.vpc_cidr
   availability_zones      = var.availability_zones
@@ -28,7 +29,7 @@ module "eks" {
   aws_region   = var.aws_region
 
   tf_state_bucket = var.tf_state_bucket
-  eks_state_key   = var.eks_state_key
+  tf_state_key   = var.tf_state_key
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets

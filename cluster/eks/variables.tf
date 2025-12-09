@@ -14,7 +14,7 @@ variable "tf_state_bucket" {
   type = string
 }
 
-variable "eks_state_key" {
+variable "tf_state_key" {
   type    = string
 }
 

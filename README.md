@@ -78,7 +78,7 @@ terraform apply
 - Оновлюємо kubeconfig:
 
 ```commandline
-aws eks update-kubeconfig --region us-east-1 --name hw-7-cluster --profile goit-terraform
+aws eks update-kubeconfig --region us-east-1 --name hw-8-9-cluster --profile goit-terraform
 ```
 
 - Перевіряємо:
